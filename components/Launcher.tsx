@@ -15,17 +15,18 @@ export const Launcher: React.FC = () => {
   if (view === 'SEARCHES') return <WinstonSearches />;
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center justify-center relative overflow-hidden selection:bg-white/20">
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col items-center relative overflow-x-hidden selection:bg-white/20">
       
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="z-10 w-full max-w-5xl px-6 flex flex-col items-center space-y-16">
+      {/* Main Content Container */}
+      <div className="z-10 w-full max-w-5xl px-6 py-12 flex flex-col items-center flex-grow justify-center space-y-16">
         
         {/* Header */}
         <div className="text-center space-y-4">
-            <h1 className="text-7xl font-black tracking-tighter">
+            <h1 className="text-6xl md:text-7xl font-black tracking-tighter">
                 WINSTON<span className="text-zinc-600">V2</span>
             </h1>
             <p className="text-zinc-500 font-mono text-sm tracking-[0.2em] uppercase">
@@ -95,12 +96,13 @@ export const Launcher: React.FC = () => {
             </div>
         </div>
         
-        {/* Status Footer */}
-        <div className="font-mono text-xs text-zinc-600 mt-12">
-            STATUS: {mode === 'LOCKED' ? 'AWAITING_INPUT' : 'SYSTEM_READY'} // MODE: {mode}
-        </div>
-
       </div>
+
+      {/* Status Footer - Pushed to bottom */}
+      <div className="py-6 font-mono text-xs text-zinc-600 z-10">
+            STATUS: {mode === 'LOCKED' ? 'AWAITING_INPUT' : 'SYSTEM_READY'} // MODE: {mode}
+      </div>
+
     </div>
   );
 };
